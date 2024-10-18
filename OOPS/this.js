@@ -18,7 +18,7 @@ const cap = {
     name: "Steve",
     sayHi: function() {
         console.log('53', this.name)
-        inner =()=>{
+        function inner(){
             console.log('55', this.name)
         }
         inner();
