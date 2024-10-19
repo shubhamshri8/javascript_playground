@@ -35,24 +35,24 @@
 
 // Coffe Shop
 
-function placeOrder(drink){
-    return new Promise (function(resolve, reject){
-        if(drink==='coffee'){
-            resolve('Order for Coffee received')
-        }
-        else{
-            reject('Other orders Rejected')
-        }
-    } )
-}
+// function placeOrder(drink){
+//     return new Promise (function(resolve, reject){
+//         if(drink==='coffee'){
+//             resolve('Order for Coffee received')
+//         }
+//         else{
+//             reject('Other orders Rejected')
+//         }
+//     } )
+// }
 
-function processOrder(order){
-    return new Promise(function(resolve){
-        console.log('Order is being Processed')
+// function processOrder(order){
+//     return new Promise(function(resolve){
+//         console.log('Order is being Processed')
 
-        resolve(`${order} is Served`)
-    })
-}
+//         resolve(`${order} is Served`)
+//     })
+// }
 
 // placeOrder('coffee').then(function(orderPlaced){
 //     console.log(orderPlaced)
@@ -71,16 +71,55 @@ function processOrder(order){
 
 // keywords
 
-async function serveOrder() {
-    try {
-        let orderPlaced = await placeOrder('tea')
-    console.log(orderPlaced);
-    let processedOrder = await processOrder(orderPlaced)
-    console.log(processedOrder);
-    } catch (error){
-        console.log(error)
-    }
+// async function serveOrder() {
+//     try {
+//         let orderPlaced = await placeOrder('tea')
+//     console.log(orderPlaced);
+//     let processedOrder = await processOrder(orderPlaced)
+//     console.log(processedOrder);
+//     } catch (error){
+//         console.log(error)
+//     }
     
-}
+// }
 
-serveOrder()
+// serveOrder()
+
+
+
+//--------------
+
+
+//file read
+
+
+const fs = require('fs')
+
+// console.log('Before')
+// fs.readFile("./file1.txt", function(err, data){
+//     if(err){
+//         console.log("there is error",err)
+//     }
+//     else{
+//         console.log('File content is -->',data.toString())
+//     }
+// })
+
+// console.log("after")
+
+//----------Alternate way
+
+console.log("Before")
+const promise = fs.promises.readFile('./file1.txt');
+
+promise.then(function(data){
+    console.log('data-->', data.toString())
+})
+
+promise.catch(function(err){
+    console.log("eroorrr->>",err)
+})
+
+
+console.log('After')
+
